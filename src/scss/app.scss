@@ -1,0 +1,150 @@
+// sass variables 
+/*$main-app-color:#90EE90;*/
+/*$main-app-color: linear-gradient(135deg, #55c4f5 0%, #00cfc5 50%, #5dd784 100%);*/
+$main-app-color: linear-gradient(135deg, #3399CC 100%, #55c4f5 0%);
+/*$main-menu-selected-color:#2ADE2A;*/
+$main-menu-selected-color:rgba(255,255,255, 0.5);
+$main-font-color: white;
+$main-font-name:'Roboto Light';
+$main-font-location: '../fonts/Roboto/Roboto-Light.ttf';
+$font-icons-name: 'Glyphicons Halflings';
+$font-icons-location: '../fonts/Glyph/glyphicons-halflings-regular';
+$toolbar-height: 50px;
+$p-font-size: 13px;
+$nav-font-size: 15px;
+$p-font-color: #818181;
+$color-bar-title: #9b9b9b;
+$color-title: #505250;
+
+// handle selection on touch
+html,
+body {
+    position: absolute;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    
+    -ms-overflow-style: none;
+    overflow: hidden;
+    
+    cursor: default;
+}
+input,
+textarea {
+    user-select: text;
+}
+
+/*-----------------------------------------*/
+@font-face {
+    font-family: $main-font-name;
+    src: url($main-font-location);
+}
+
+/*-----------------------------------------*/
+.snap-content{
+    background-color: white;
+    cursor: pointer;
+    font-family: $main-font-name;
+    overflow: hidden;
+}
+
+#toolbar{        
+    /*background-color: $main-app-color;*/
+    background: $main-app-color;
+    right: 0;
+    left: 0;
+    width: auto;
+    height: $toolbar-height;
+    padding: 15px 10px 0 0;
+}
+
+#toolbar p {
+    font-family: $main-font-name;
+    font-size: 20px;
+    color: $main-font-color;
+    margin: 0;
+    text-align: left;
+    line-height: 22px;
+    margin-left: 50px;
+    text-align: center;
+}
+
+#toolbar-icon{
+    text-align: center;
+    width: 80px;
+    margin-left: 0px;
+    margin-top: -16px;
+    height: 50px;
+    padding-top: 15px;
+}
+
+#scrollable-content-area{
+    overflow-x: hidden; 
+    overflow-y: auto;
+    /*background-color: blue;*/
+}
+
+/*------------------------------------------*/
+.snap-drawer-left{
+    /*background-color: $main-app-color;*/
+    background: $main-app-color;
+    font-family: $main-font-name;
+}
+
+#logo-container{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.snap-drawer-left ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    overflow-x: hidden;
+    margin-top: 20px;
+}
+
+.item-container{
+    width: 110%; 
+    height: 50px; 
+    padding-top: 14px;   
+    cursor: pointer;
+}
+
+.snap-drawer-left li p {
+    font-size: $nav-font-size;
+    color: $main-font-color;
+    margin: 0 0 0 $toolbar-height;
+    margin-left: 50px;
+}
+
+.item-container-selected{
+    background-color: $main-menu-selected-color;
+}
+
+
+/*-----------------------------------------------*/
+#header{
+    /*background-color: $main-app-color;*/
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    /*margin-top: -21px;*/
+    font-size: 30px;
+}
+
+/* -----------------------------------------------*/
+.icons{
+    font-size: 20px;
+    color: $main-font-color;
+    display: block;
+    float: left;
+    margin-left: 20px;
+}

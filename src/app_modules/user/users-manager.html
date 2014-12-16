@@ -1,0 +1,138 @@
+<div id="content" style="margin-top:30px; margin-left: 2.5%; width: 95%;">
+	
+	<div id="btn-group-container">	
+		<div class="btn-group">
+	        <label class="btn btn-primary" ng-model="userMode" btn-radio="'student'" uncheckable>Estudante</label>
+	        <label class="btn btn-primary" ng-model="userMode" btn-radio="'teacher'" uncheckable>Professor</label>
+	        <label class="btn btn-primary" ng-model="userMode" btn-radio="'employee'" uncheckable>Servidor</label>
+	    </div>
+	</div>
+
+	<!-- STUDENT ACCORDION CONTAINER -->
+	<div id="students-accordion-container" ng-show="student">
+		<accordion close-others="oneAtATime"> 
+			
+			<accordion-group heading='Cadastrar'>
+				<div id="header">
+					<h4>Dados Pessoais</h4>
+				</div>	
+	
+				<div class="form-group" style="width:95%; margin-left: 1.5%; text-align:center;">
+					<input ng-model="newStudent.name" type="text" class="form-control" placeholder="Nome" style="width: 50%; margin-top:10px;">
+					<input type="text" class="form-control" placeholder="Endereço" ng-model="newStudent.address" style="width: 50%; margin-top:10px;">
+					<input type="text" class="form-control" placeholder="CPF" ng-model="newStudent.cpf" style="width: 50%; margin-top:10px;">
+					<input type="text" class="form-control" placeholder="Email" ng-model="newStudent.email" style="width: 50%; margin-top:10px;">
+					<input type="text" class="form-control" placeholder="Telefone" ng-model="newStudent.phoneNumber" style="width: 50%; margin-top:10px;">
+					<input type="text" class="form-control" placeholder="Matrícula" ng-model="newStudent.code" style="width: 50%; margin-top:10px;">
+				</div>
+			
+				<div style="width: 100%; text-align:center; margin-top: 80px;">
+					<button class="btn btn-success" ng-click="onAddStudentButton()">Cadastrar</button>	
+				</div>
+			</accordion-group>
+			
+			<accordion-group heading='Listar'>	
+				<div id="header">
+					<h4>Estudantes cadastrados</h4>
+				</div>	
+				<div id="list-container">
+					<ul style="list-style-type:none;">
+						<li ng-repeat="student in students" style="margin-top:10px;">
+							<hr>
+							{{student.matricula}} - {{student.client.name}}
+							<div id="buttons-container" style="float:right;">
+								<button>Editar</button>
+								<button>Deletar</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</accordion-group>
+
+		</accordion>
+	</div>
+
+	<!-- TEACHER ACCORDION CONTAINER -->
+	<div id="teacher-accordion-container" ng-show="teacher">
+		<accordion close-others="oneAtATime"> 
+			<accordion-group heading='Cadastrar'>
+				<div id="header">
+					<h4>Dados Pessoais</h4>
+				</div>	
+
+				<div class="form-group" style="width:95%; margin-left: 1.5%;">
+					<input ng-model="newTeacher.name" type="text" class="form-control" placeholder="Nome"style="width: 50%; margin-top: 10px;">
+					<input ng-model="newTeacher.address" type="text" class="form-control" placeholder="Endereço"style="width: 50%; margin-top: 10px;">
+					<input ng-model="newTeacher.cpf" type="text" class="form-control" placeholder="CPF"style="width: 50%; margin-top: 10px;">
+					<input ng-model="newTeacher.email" type="text" class="form-control" placeholder="Email"style="width: 50%; margin-top: 10px;">
+					<input ng-model="newTeacher.phoneNumber" type="text" class="form-control" placeholder="Telefone"style="width: 50%; margin-top: 10px;">
+					<input ng-model="newTeacher.workPlace" type="text" class="form-control" placeholder="Local de Trabalho"style="width: 50%; margin-top: 10px;">
+				</div>
+
+				<div style="width: 100%; text-align:center; margin-top: 80px;">
+					<button class="btn btn-success" ng-click="onAddTeacherButton()">Cadastrar</button>	
+				</div>
+			</accordion-group>
+			<accordion-group heading='Listar'>
+				<div id="header">
+					<h4>Professores Cadastrados</h4>
+				</div>	
+				<div id="list-container">
+					<ul style="list-style-type:none;">
+						<li ng-repeat="teacher in teachers" style="margin-top:10px;">
+							<hr>
+							{{teacher.workPlace}} - {{teacher.client.name}}
+							<!-- {{teacher.client.name}} -->
+							<div id="buttons-container" style="float:right;">
+								<button>Editar</button>
+								<button>Deletar</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</accordion-group>
+		</accordion>
+	</div>
+
+	<!-- EMPLOYEE ACCORDION CONTAINER -->
+	<div id="employee-accordion-container" ng-show="employee">
+		<accordion close-others="oneAtATime"> 
+			<accordion-group heading='Cadastrar'>
+				<div id="header">
+					<h4>Dados Pessoais</h4>
+				</div>
+
+				<div class="form-group" style="width:95%; margin-left: 1.5%;">
+					<input ng-model="newEmployee.name" type="text" class="form-control" placeholder="Nome"style="width: 50%; margin-top: 10px;">
+					<input ng-model="newEmployee.address" type="text" class="form-control" placeholder="Endereço"style="width: 50%; margin-top: 10px;">
+					<input ng-model="newEmployee.cpf" type="text" class="form-control" placeholder="CPF"style="width: 50%; margin-top: 10px;">
+					<input ng-model="newEmployee.email" type="text" class="form-control" placeholder="Email"style="width: 50%; margin-top: 10px;">
+					<input ng-model="newEmployee.phoneNumber" type="text" class="form-control" placeholder="Telefone"style="width: 50%; margin-top: 10px;">
+					<input ng-model="newEmployee.workPlace" type="text" class="form-control" placeholder="Local de Trabalho"style="width: 50%; margin-top: 10px;">
+				</div>
+
+				<div style="width: 100%; text-align:center; margin-top: 80px;">
+					<button class="btn btn-success" ng-click="onAddEmployeeButton()">Cadastrar</button>	
+				</div>
+			</accordion-group>
+			<accordion-group heading='Listar'>
+				<div id="header">
+					<h4>Servidores Cadastrados</h4>
+				</div>	
+				<div id="list-container">
+					<ul style="list-style-type:none;">
+						<li ng-repeat="employee in employees" style="margin-top:10px;">
+							<hr>
+							{{employee.workPlace}} - {{employee.client.name}}
+							<div id="buttons-container" style="float:right;">
+								<button>Editar</button>
+								<button>Deletar</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</accordion-group>
+		</accordion>
+	</div>
+
+</div>
