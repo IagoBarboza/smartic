@@ -92,24 +92,39 @@
 					<h4>Professores Cadastrados</h4>
 				</div>	
 				<div id="list-container">
-					<ul style="list-style-type:none;">
-						<li ng-repeat="teacher in teachers" style="margin-top:10px;">
-							<hr>
-							{{teacher.workPlace}} - {{teacher.client.name}}
-							<!-- {{teacher.client.name}} -->
-							<div id="buttons-container" style="float:right;">
-								<button>Editar</button>
-								<button ng-click="onDeleteTeacherButton(teacher.id)">Deletar</button>
-							</div>
-						</li>
-					</ul>
+					<accordion close-others="oneAtTime">		
+							<accordion-group ng-repeat="teacher in teachers">
+								<accordion-heading>
+									<div>
+										{{teacher.workPlace}} - {{teacher.client.name}} 
+									</div>
+								</accordion-heading>
+								<div id="teacher-container">
+									<div class="form-group" style="width:95%; margin-left: 1.5%; text-align:center;">
+										<input ng-model="teacher.client.name" type="text" class="form-control" placeholder="Nome" style="width: 50%; margin-top:10px;">
+										<input type="text" class="form-control" placeholder="Endereço" ng-model="teacher.client.address" style="width: 50%; margin-top:10px;">
+										<input type="text" class="form-control" placeholder="CPF" ng-model="teacher.client.cpf" style="width: 50%; margin-top:10px;">											<input type="text" class="form-control" placeholder="Email" ng-model="teacher.client.email" style="width: 50%; margin-top:10px;">
+										<input type="text" class="form-control" placeholder="Telefone" ng-model="teacher.client.phone_number" style="width: 50%; margin-top:10px;">
+										<input type="text" class="form-control" placeholder="Local de Trabalho" ng-model="teacher.workPlace" style="width: 50%; margin-top:10px;">
+									</div>
+									<div id="buttons-container" style="float:right;">
+										<button ng-click="onUpdateTeacherButton(teacher)">Atualizar</button>
+										<button ng-click="onDeleteTeacherButton(teacher.id)">Deletar</button>
+									</div>	
+								</div>	
+							</accordion-group>
+					</accordion>
+				</div>
+			</accordion-group>
+
+		</accordion>
 				</div>
 			</accordion-group>
 		</accordion>
 	</div>
 
 	<!-- EMPLOYEE ACCORDION CONTAINER -->
-	<div id="employee-accordion-container" ng-show="employee">
+	<div id="employee-accordion-container" ng-show="employee" style="width: 95%; margin-left:2.5%;">
 		<accordion close-others="oneAtATime"> 
 			<accordion-group heading='Cadastrar'>
 				<div id="header">
@@ -134,16 +149,28 @@
 					<h4>Servidores Cadastrados</h4>
 				</div>	
 				<div id="list-container">
-					<ul style="list-style-type:none;">
-						<li ng-repeat="employee in employees" style="margin-top:10px;">
-							<hr>
-							{{employee.workPlace}} - {{employee.client.name}}
-							<div id="buttons-container" style="float:right;">
-								<button>Editar</button>
-								<button ng-click="onDeleteEmployeeButton(employee.id)">Deletar</button>
-							</div>
-						</li>
-					</ul>
+					<accordion close-others="oneAtTime">		
+							<accordion-group ng-repeat="employee in employees">
+								<accordion-heading>
+									<div>
+										{{employee.workPlace}} - {{employee.client.name}} 
+									</div>
+								</accordion-heading>
+								<div id="employee-container">
+									<div class="form-group" style="width:95%; margin-left: 1.5%; text-align:center;">
+										<input ng-model="employee.client.name" type="text" class="form-control" placeholder="Nome" style="width: 50%; margin-top:10px;">
+										<input type="text" class="form-control" placeholder="Endereço" ng-model="employee.client.address" style="width: 50%; margin-top:10px;">
+										<input type="text" class="form-control" placeholder="CPF" ng-model="employee.client.cpf" style="width: 50%; margin-top:10px;">											<input type="text" class="form-control" placeholder="Email" ng-model="employee.client.email" style="width: 50%; margin-top:10px;">
+										<input type="text" class="form-control" placeholder="Telefone" ng-model="employee.client.phone_number" style="width: 50%; margin-top:10px;">
+										<input type="text" class="form-control" placeholder="Local de Trabalho" ng-model="employee.workPlace" style="width: 50%; margin-top:10px;">
+									</div>
+									<div id="buttons-container" style="float:right;">
+										<button ng-click="onUpdateEmployeeButton(employee)">Atualizar</button>
+										<button ng-click="onDeleteEmployeeButton(employee.id)">Deletar</button>
+									</div>	
+								</div>	
+							</accordion-group>
+					</accordion>
 				</div>
 			</accordion-group>
 		</accordion>

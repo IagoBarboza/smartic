@@ -200,6 +200,7 @@
 
         //UPDATE USER
         function updateUser(type, user, callback){
+            //STUDENT
             if(type == 'STUDENT'){
                 $http({
                     method: 'PUT',
@@ -214,6 +215,47 @@
                     callback(response);
                 })
                 .error(function(response){
+                    alert('Erro! Os dados do estudante não foram atualizados. Entre em contato com o desenvolvedor do sistema!');
+                    console.log(response);
+                });
+            }
+
+            //TEACHER
+            if(type == 'TEACHER'){
+                $http({
+                    method: 'PUT',
+                    url: server+'/api/teacher/update',
+                    data: {
+                        client: user.client,
+                        workPlace: user.workPlace,
+                        id: user.id
+                    }
+                })
+                .success(function(response){
+                    callback(response);
+                })
+                .error(function(response){
+                    alert('Erro! Os dados do professor não foram atualizados. Entre em contato com o desenvolvedor do sistema!');
+                    console.log(response);
+                });
+            }
+
+            //EMPLOYEE
+            if(type == 'EMPLOYEE'){
+                $http({
+                    method: 'PUT',
+                    url: server+'/api/employees/update',
+                    data: {
+                        client: user.client,
+                        workPlace: user.workPlace,
+                        id: user.id
+                    }
+                })
+                .success(function(response){
+                    callback(response);
+                })
+                .error(function(response){
+                    alert('Erro! Os dados do servidor não foram atualizados. Entre em contato com o desenvolvedor do sistema!');
                     console.log(response);
                 });
             }
@@ -365,9 +407,42 @@
             });
         }
 
+        //UPDATE STUDENT
         $scope.onUpdateStudentButton = function(student){
             UserService.updateUser('STUDENT', student, function(response){
-                console.log(response);
+                if(response.id){
+                    alert('Os dados do estudante foram atualizados com sucesso!');
+                    updateUsersList();
+                }
+                else{
+                    alert('Erro! Os dados do estudante não foram atualizados. Entre em contado com o desenvolvedor do sistema!');
+                }
+            });
+        }
+
+        //UPDATE TEACHER
+        $scope.onUpdateTeacherButton = function(teacher){
+            UserService.updateUser('TEACHER', teacher, function(response){
+                if(response.id){
+                    alert('Os dados do professor foram atualizados com sucesso!');
+                    updateUsersList();
+                }
+                else{
+                    alert('Erro! Os dados do professor não foram atualizados. Entre em contado com o desenvolvedor do sistema!');
+                }
+            });
+        }
+
+        //UPDATE EMPLOYEE
+        $scope.onUpdateEmployeeButton = function(employee){
+            UserService.updateUser('EMPLOYEE', employee, function(response){
+                if(response.id){
+                    alert('Os dados do servidor foram atualizados com sucesso!');
+                    updateUsersList();
+                }
+                else{
+                    alert('Erro! Os dados do servidor não foram atualizados. Entre em contado com o desenvolvedor do sistema!');
+                }
             });
         }
 
