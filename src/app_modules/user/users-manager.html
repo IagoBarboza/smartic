@@ -36,16 +36,30 @@
 					<h4>Estudantes cadastrados</h4>
 				</div>	
 				<div id="list-container">
-					<ul style="list-style-type:none;">
-						<li ng-repeat="student in students" style="margin-top:10px;">
-							<hr>
-							{{student.matricula}} - {{student.client.name}}
-							<div id="buttons-container" style="float:right;">
-								<button>Editar</button>
-								<button>Deletar</button>
-							</div>
-						</li>
-					</ul>
+						<accordion close-others="oneAtTime">		
+								<accordion-group ng-repeat="student in students">
+									<accordion-heading>
+										<div>
+											{{student.matricula}} - {{student.client.name}} 
+										</div>
+									</accordion-heading>
+									<div id="student-container">
+										<div class="form-group" style="width:95%; margin-left: 1.5%; text-align:center;">
+											<input ng-model="student.client.name" type="text" class="form-control" placeholder="Nome" style="width: 50%; margin-top:10px;">
+											<input type="text" class="form-control" placeholder="Endereço" ng-model="student.client.address" style="width: 50%; margin-top:10px;">
+											<input type="text" class="form-control" placeholder="CPF" ng-model="student.client.cpf" style="width: 50%; margin-top:10px;">
+											<input type="text" class="form-control" placeholder="Email" ng-model="student.client.email" style="width: 50%; margin-top:10px;">
+											<input type="text" class="form-control" placeholder="Telefone" ng-model="student.client.phone_number" style="width: 50%; margin-top:10px;">
+											<input type="text" class="form-control" placeholder="Matrícula" ng-model="student.matricula" style="width: 50%; margin-top:10px;">
+										</div>
+										<div id="buttons-container" style="float:right;">
+											<button ng-click="onUpdateStudentButton(student)">Atualizar</button>
+											<button ng-click="onDeleteStudentButton(student.id)">Deletar</button>
+										</div>	
+									</div>
+									
+								</accordion-group>
+						</accordion>
 				</div>
 			</accordion-group>
 
@@ -85,7 +99,7 @@
 							<!-- {{teacher.client.name}} -->
 							<div id="buttons-container" style="float:right;">
 								<button>Editar</button>
-								<button>Deletar</button>
+								<button ng-click="onDeleteTeacherButton(teacher.id)">Deletar</button>
 							</div>
 						</li>
 					</ul>
@@ -126,7 +140,7 @@
 							{{employee.workPlace}} - {{employee.client.name}}
 							<div id="buttons-container" style="float:right;">
 								<button>Editar</button>
-								<button>Deletar</button>
+								<button ng-click="onDeleteEmployeeButton(employee.id)">Deletar</button>
 							</div>
 						</li>
 					</ul>

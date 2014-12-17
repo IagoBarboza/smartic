@@ -5,7 +5,7 @@
 
     //USERS SERVICE
     .factory('UserService', function($http){
-        var server = 'http://179.235.152.214:8084';
+        var server = 'http://179.235.154.163:8084';
         var students = [];
         var teachers = [];
         var employees = [];
@@ -153,10 +153,78 @@
             }
         }
 
+        //DELETE USER
+        function deleteUser(type, id, callback){
+            //STUDENT
+            if(type == 'STUDENT'){
+                $http({
+                    method: 'DELETE',
+                    url: server+'/api/student/delete/'+id
+                })
+                .success(function(response){
+                    callback(response);
+                })
+                .error(function(response){
+                    alert('O usuário não pôde ser deleteado. Por favor, entre em contato com o desenvolvedor do sistema!');
+                });
+            }
+
+            //TEACHER
+            if(type == 'TEACHER'){
+                $http({
+                    method: 'DELETE',
+                    url: server+'/api/teacher/delete/'+id
+                })
+                .success(function(response){
+                    callback(response);
+                })
+                .error(function(response){
+                    alert('O usuário não pôde ser deleteado. Por favor, entre em contato com o desenvolvedor do sistema!');
+                });
+            }
+
+            //EMPLOYEE
+            if(type == 'EMPLOYEE'){
+                $http({
+                    method: 'DELETE',
+                    url: server+'/api/employees/delete/'+id
+                })
+                .success(function(response){
+                    callback(response);
+                })
+                .error(function(response){
+                    alert('O usuário não pôde ser deleteado. Por favor, entre em contato com o desenvolvedor do sistema!');
+                });
+            }
+        }
+
+        //UPDATE USER
+        function updateUser(type, user, callback){
+            if(type == 'STUDENT'){
+                $http({
+                    method: 'PUT',
+                    url: server+'/api/student/update',
+                    data: {
+                        client: user.client,
+                        matricula: user.matricula,
+                        id: user.id
+                    }
+                })
+                .success(function(response){
+                    callback(response);
+                })
+                .error(function(response){
+                    console.log(response);
+                });
+            }
+        }
+
     	return {
     	   updateUsersList : updateUsersList,
            getUsersList: getUsersList,
-           addUser: addUser
+           addUser: addUser,
+           deleteUser: deleteUser,
+           updateUser: updateUser
     	}
     })
     
@@ -262,6 +330,44 @@
                     $scope.newEmployee.phoneNumber = "";
                     $scope.newEmployee.workPlace = "";
                 }
+            });
+        }
+
+        //DELETE STUDENT
+        $scope.onDeleteStudentButton = function(id){
+            UserService.deleteUser('STUDENT', id, function(response){
+                if(response.sucesso == 'Aluno deletado com sucesso'){
+                    alert('Aluno deletado com sucesso!');
+                    updateUsersList();
+                }
+            });
+        }
+
+        //DELETE TEACHER
+        $scope.onDeleteTeacherButton = function(id){
+            console.log(id);
+            UserService.deleteUser('TEACHER', id, function(response){
+                if(response.sucesso == 'Professor deletado com sucesso'){
+                    alert('Professor deletado com sucesso!');
+                    updateUsersList();
+                }
+            });
+        }
+
+        //DELETE EMPLOYEE
+        $scope.onDeleteEmployeeButton = function(id){
+            console.log('on delete employee button');
+            UserService.deleteUser('EMPLOYEE', id, function(response){
+                if(response.sucesso == 'Servidor deletado com sucesso'){
+                    alert('Servidor deletado com sucesso!');
+                    updateUsersList();
+                }
+            });
+        }
+
+        $scope.onUpdateStudentButton = function(student){
+            UserService.updateUser('STUDENT', student, function(response){
+                console.log(response);
             });
         }
 
