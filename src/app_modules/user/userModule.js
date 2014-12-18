@@ -91,9 +91,11 @@
                 })
                 .success(function(response){
                     callback(response);
+                    alert(response);
                 })
                 .error(function(response){
                     alert('Não foi possível cadastrar o usuário. Por favor entre em contato com o desenvolvedor do sistema!');
+                    alert(response);
                 });
             }
 

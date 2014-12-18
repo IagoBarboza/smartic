@@ -8,6 +8,18 @@ angular.module('ic.mainMenu', [])
 				description: 'Gerenciador de Usuários',
 				icon: 'glyphicon-user',
 				initialItemClass: 'item-container-selected'
+			},
+			{
+				id: 'rooms-manager',
+				description: 'Gerenciador de Salas',
+				icon: 'glyphicon-home',
+				initialItemClass: ''
+			},
+			{
+				id: 'docs-manager',
+				description: 'Gerenciador de Documentos',
+				icon: 'glyphicon-file',
+				initialItemClass: ''
 			}
 		];
 

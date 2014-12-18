@@ -1,0 +1,103 @@
+<div id="content" style="margin-top:30px; margin-left: 2.5%; width: 95%;">
+	
+	<div id="docs-accordion-container">
+		<accordion close-others="oneAtATime"> 
+			
+			<accordion-group heading='Solicitados - TODO'>
+				<div id="todo-list-container">
+						<accordion close-others="oneAtTime">		
+								<accordion-group ng-repeat="doc in docs" ng-show="isToDo(doc.status)">
+									<accordion-heading>
+										<div>
+											{{doc.client.name}} - {{doc.docType}} 
+										</div>
+									</accordion-heading>
+									<div id="doc-container">
+										<div class="form-group" style="width:95%; margin-left: 1.5%; text-align:center;">
+											<h5 style="margin-left: -97%;">Tipo</h5>
+											<input id="tipo" ng-model="doc.docType" type="text" class="form-control" placeholder="Tipo" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -94%;">Descrição</h5>
+											<input type="text" class="form-control" placeholder="Descrição" ng-model="doc.description" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -97%;">Link</h5>
+											<input type="text" class="form-control" placeholder="Link" ng-model="doc.link" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -96%;">Status</h5>
+											<input type="text" class="form-control" placeholder="Status" ng-model="doc.status" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -90%;">Nome do Arquivo</h5>
+											<input type="text" class="form-control" placeholder="Nome do arquivo" ng-model="doc.fileName" style="width: 50%; margin-top:10px;">
+										</div>
+										<div id="buttons-container" style="float:right;">
+											<button ng-click="onUpdateButton(doc)">Atualizar</button>
+											<button ng-click="onDeleteButton(doc.id)">Deletar</button>
+										</div>	
+									</div>
+								</accordion-group>
+						</accordion>
+				</div>
+			</accordion-group>
+			<accordion-group heading='Em Andamento - DOING'>
+				<div id="doing-list-container">
+						<accordion close-others="oneAtTime">		
+								<accordion-group ng-repeat="doc in docs" ng-show="isDoing(doc.status)">
+									<accordion-heading>
+										<div>
+											{{doc.client.name}} - {{doc.docType}} 
+										</div>
+									</accordion-heading>
+									<div id="doc-container">
+										<div class="form-group" style="width:95%; margin-left: 1.5%; text-align:center;">
+											<h5 style="margin-left: -97%;">Tipo</h5>
+											<input id="tipo" ng-model="doc.docType" type="text" class="form-control" placeholder="Tipo" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -94%;">Descrição</h5>
+											<input type="text" class="form-control" placeholder="Descrição" ng-model="doc.description" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -97%;">Link</h5>
+											<input type="text" class="form-control" placeholder="Link" ng-model="doc.link" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -96%;">Status</h5>
+											<input type="text" class="form-control" placeholder="Status" ng-model="doc.status" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -90%;">Nome do Arquivo</h5>
+											<input type="text" class="form-control" placeholder="Nome do arquivo" ng-model="doc.fileName" style="width: 50%; margin-top:10px;">
+										</div>
+										<div id="buttons-container" style="float:right;">
+											<button ng-click="onUpdateButton(doc)">Atualizar</button>
+											<button ng-click="onDeleteButton(doc.id)">Deletar</button>
+										</div>	
+									</div>
+								</accordion-group>
+						</accordion>
+				</div>
+			</accordion-group>
+
+			<accordion-group heading='Finalizados - DONE'>
+				<div id="done-list-container">
+						<accordion close-others="oneAtTime">		
+								<accordion-group ng-repeat="doc in docs" ng-show="isDone(doc.status)">
+									<accordion-heading>
+										<div>
+											{{doc.client.name}} - {{doc.docType}} 
+										</div>
+									</accordion-heading>
+									<div id="doc-container">
+										<div class="form-group" style="width:95%; margin-left: 1.5%; text-align:center;">
+											<h5 style="margin-left: -97%;">Tipo</h5>
+											<input id="tipo" ng-model="doc.docType" type="text" class="form-control" placeholder="Tipo" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -94%;">Descrição</h5>
+											<input type="text" class="form-control" placeholder="Descrição" ng-model="doc.description" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -97%;">Link</h5>
+											<input type="text" class="form-control" placeholder="Link" ng-model="doc.link" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -96%;">Status</h5>
+											<input type="text" class="form-control" placeholder="Status" ng-model="doc.status" style="width: 50%; margin-top:10px;">
+											<h5 style="margin-left: -90%;">Nome do Arquivo</h5>
+											<input type="text" class="form-control" placeholder="Nome do arquivo" ng-model="doc.fileName" style="width: 50%; margin-top:10px;">
+										</div>
+										<div id="buttons-container" style="float:right;">
+											<button ng-click="onUpdateButton(doc)">Atualizar</button>
+											<button ng-click="onDeleteButton(doc.id)">Deletar</button>
+										</div>	
+									</div>
+								</accordion-group>
+						</accordion>
+				</div>
+			</accordion-group>
+
+		</accordion>
+	</div>
+</div>
