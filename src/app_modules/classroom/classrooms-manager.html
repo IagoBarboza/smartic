@@ -1,0 +1,47 @@
+<div id="content" style="margin-top:30px; margin-left: 2.5%; width: 95%;">
+
+		<accordion>	
+			<accordion-group heading='Cadastrar'>
+				<div id="header">
+					<h4>Informações</h4>
+				</div>	
+	
+				<div class="form-group" style="width:95%; margin-left: 1.5%; text-align:center;">
+					<input type="text" class="form-control" placeholder="Nome" ng-model="newClassRoom.name" style="width: 50%; margin-top:10px;">
+					<input ng-model="newClassRoom.location" type="text" class="form-control" placeholder="Local" style="width: 50%; margin-top:10px;">
+				</div>
+			
+				<div style="width: 100%; text-align:center; margin-top: 80px;">
+					<button class="btn btn-success" ng-click="onAddClassRoomButton()">Cadastrar</button>	
+				</div>
+			</accordion-group>
+		
+			<accordion-group heading='Listar'>	
+				<div id="header">
+					<h4>Salas Cadastradas</h4>
+				</div>	
+				<div id="list-container">
+						<accordion close-others="oneAtTime">		
+								<accordion-group ng-repeat="classRoom in classRooms">
+									<accordion-heading>
+										<div>
+											{{classRoom.name}} 
+										</div>
+									</accordion-heading>
+									<div id="student-container">
+										<div class="form-group" style="width:95%; margin-left: 1.5%; text-align:center;">
+											<input ng-model="classRoom.name" type="text" class="form-control" placeholder="Nome" style="width: 50%; margin-top:10px;">
+											<input type="text" class="form-control" placeholder="Local" ng-model="classRoom.local" style="width: 50%; margin-top:10px;">
+										</div>
+										<div id="buttons-container" style="float:right;">
+											<button ng-click="onUpdateClassRoomButton(classRoom)">Atualizar</button>
+											<button ng-click="onDeleteClassRoomButton(classRoom.id)">Deletar</button>
+										</div>	
+									</div>
+									
+								</accordion-group>
+						</accordion>
+				</div>
+			</accordion-group>
+		</accordion>
+</div>	

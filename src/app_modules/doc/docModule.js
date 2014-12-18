@@ -2,7 +2,7 @@ angular.module('ic.doc', [])
 	
 	//DOCS SERVICE
 	.factory('DocsService', function($http){
-		var server = 'http://179.235.154.163:8084';
+		var server = 'http://172.20.9.99:8084';
 		var docs = [];
 
 		//UPDATE DOCUMENTS LIST

@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('tp.app', ['ngRoute', 'ui.bootstrap', 'ic.mainMenu', 'ic.user', 'ic.room', 'ic.doc'])
+    angular.module('tp.app', ['ngRoute', 'ui.bootstrap', 'ic.mainMenu', 'ic.user', 'ic.classroom', 'ic.doc'])
 
     .config(['$routeProvider', '$httpProvider',
     function (routeProvider, httpProvider) {
@@ -15,8 +15,8 @@
                 controller: 'UsersManagerCtrl'
             }).
             when('/rooms-manager', {
-                templateUrl: 'app_modules/room/rooms-manager.html',
-                controller: 'RoomsManagerCtrl'
+                templateUrl: 'app_modules/classroom/classrooms-manager.html',
+                controller: 'ClassRoomsManagerCtrl'
             }).
             when('/docs-manager', {
                 templateUrl: 'app_modules/doc/docs-manager.html',
